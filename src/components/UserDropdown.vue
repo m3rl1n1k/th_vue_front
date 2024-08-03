@@ -63,11 +63,6 @@ a:hover {
 import {createPopper} from "@popperjs/core";
 
 export default {
-  mounted() {
-    if (!localStorage.getItem('token')) {
-      this.$router.push('login')
-    }
-  },
   data() {
     return {
       dropdownPopoverShow: false

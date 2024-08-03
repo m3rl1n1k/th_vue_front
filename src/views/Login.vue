@@ -19,6 +19,7 @@ export default {
     const router = useRouter();
     const email = ref("");
     const password = ref("");
+    const server_error = ref("");
     const re_password = ref("");
     const isLoading = ref(false);
     const emailError = ref("");
@@ -58,7 +59,7 @@ export default {
           if (status === 400) {
             this.$refs.alertClose.showAlert(err.response.data.message, 'bg-red-500');
           } else if (status === 401) {
-            this.$refs.alertClose.showAlert(err.response.data.message, 'bg-red-500');
+            server_error.value = "User not found"
           } else if (status === 500) {
             this.$refs.alertClose.showAlert(err.response.data.message, 'bg-red-500');
           }
@@ -107,7 +108,9 @@ export default {
       emailError,
       passwordError,
       rePasswordError,
-      logIn
+      server_error,
+      logIn,
+      validatePassword
     };
   }
 };
@@ -169,7 +172,7 @@ export default {
                               type="password"
                               @change="validatePassword"
                     />
-                      <span v-if="emailError" class="text-red-500">{{ passwordError }}</span>
+                      <span v-if="emailError" class="text-red-500 ">{{ passwordError }}</span>
                     </div>
                     <div class="text-center mt-6">
                       <button
@@ -192,6 +195,7 @@ export default {
                         to="/registration">
                       Create new account
                     </RouterLink>
+                    <span v-if="server_error" class="text-red-500 text-center">{{ server_error }}</span>
                   </div>
                 </div>
               </div>
