@@ -6,7 +6,7 @@ import IconsComponent from "@/components/IconsComponent.vue";
 
 <template>
   <icons-component></icons-component>
-  <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary" style="height: calc(100vh - 50px)">
+  <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
     <div id="sidebarMenu" aria-labelledby="sidebarMenuLabel" class="offcanvas-md offcanvas-end bg-body-tertiary"
          tabindex="-1">
       <div class="offcanvas-header">
@@ -26,12 +26,12 @@ import IconsComponent from "@/components/IconsComponent.vue";
             </RouterLink>
           </li>
           <li class="nav-item">
-            <a class="nav-link d-flex align-items-center gap-2" href="#">
+            <RouterLink class="nav-link d-flex align-items-center gap-2" href="#" to="/transactions">
               <svg class="bi">
                 <use xlink:href="#file-earmark"></use>
               </svg>
-              Orders
-            </a>
+              Transitions
+            </RouterLink>
           </li>
           <li class="nav-item">
             <a class="nav-link d-flex align-items-center gap-2" href="#">
@@ -109,6 +109,7 @@ import IconsComponent from "@/components/IconsComponent.vue";
     position: -webkit-sticky;
     position: sticky;
     top: 48px;
+    height: calc(100vh - 50px)
   }
 }
 

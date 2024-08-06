@@ -1,6 +1,6 @@
 <script setup>
 import "https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js"
-import "../assets/js/dashboard.js"
+// import "../assets/js/dashboard.js"
 import SidebarComponent from "@/components/SidebarComponent.vue";
 import HeaderComponent from "@/components/HeaderComponent.vue";
 </script>

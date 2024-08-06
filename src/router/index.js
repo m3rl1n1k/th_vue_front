@@ -1,11 +1,11 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import {createRouter, createWebHistory} from 'vue-router';
 import LoginView from "@/views/LoginView.vue";
 import RegisterView from "@/views/RegisterView.vue";
 import DashboardView from "@/views/DashboardView.vue"; // Імпортуйте відсутні компоненти
-import TransactionsView from "@/views/TransactionsView.vue"; // Імпортуйте відсутні компоненти
+import TransactionsView from "@/views/Transaction/TransactionsView.vue"; // Імпортуйте відсутні компоненти
 import ProfileView from "@/views/ProfileView.vue"; // Імпортуйте відсутні компоненти
-
-import { isTokenValid } from './auth';
+import {isTokenValid} from './auth';
+import TransactionNewView from "@/views/Transaction/TransactionNewView.vue";
 
 const routes = [
     {
@@ -26,6 +26,14 @@ const routes = [
         path: "/transactions",
         component: TransactionsView,
         name: 'transactions',
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: "/transaction/new",
+        component: TransactionNewView,
+        name: 'new',
         meta: {
             requiresAuth: true
         }
@@ -58,7 +66,7 @@ router.beforeEach((to, from, next) => {
         if (!isAuthenticated) {
             next({
                 path: '/login',
-                query: { redirect: to.fullPath }
+                query: {redirect: to.fullPath}
             });
         } else {
             next();
